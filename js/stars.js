@@ -9,15 +9,26 @@ var starObj = function () {
     this.picNo;
     this.timer;
 
+    this.xSped;
+    this.ySped;
+
 };
 
 starObj.prototype.init = function () {
     this.x = Math.random()*600+100;//[0,1)
     this.y = Math.random()*300+150;
+
     this.picNo = Math.floor(Math.random()*7);
-    this.timer = 0
+    this.timer = 0;
+
+    this.xSped = Math.random()*3;
+    this.ySped = Math.random()*3;
 };
 starObj.prototype.update = function () {
+
+    this.x +=this.xSped*daltaTime*0.002;
+    this.y +=this.ySped*daltaTime*0.002;
+
     this.timer += daltaTime;
     if(this.timer>50){
         this.picNo += 1;
