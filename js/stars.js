@@ -53,6 +53,8 @@ starObj.prototype.draw = function () {
 
     context.globalAlpha = life;
     context.drawImage(starPic,this.picNo*7,0,7,7,this.x,this.y,7,7);
+    //2,3,4,5个参数表示截图图片的大小，6,7个参数表示截截取的图片显示在画布哪里，
+    // 8,9个参数表示在画布上图片显示的尺寸，也就是说可以拉伸图片
     context.restore();
 
 
