@@ -26,15 +26,15 @@ starObj.prototype.init = function () {
 };
 starObj.prototype.update = function () {
 
-    this.x +=this.xSped*daltaTime*0.004;
-    this.y +=this.ySped*daltaTime*0.004;
+    this.x +=this.xSped*daltaTime*0.005;
+    this.y +=this.ySped*daltaTime*0.005;
 
-    if(this.x<100 || this.x>700){
+    if(this.x<100+3 || this.x>700-7){
         this.init();
         return;
     }
 
-    if(this.y<150 || this.y>450){
+    if(this.y<150+3 || this.y>450-7){
         this.init();
         return;
     }
@@ -49,7 +49,13 @@ starObj.prototype.update = function () {
 };
 
 starObj.prototype.draw = function () {
+    context.save();
+
+    context.globalAlpha = life;
     context.drawImage(starPic,this.picNo*7,0,7,7,this.x,this.y,7,7);
+    context.restore();
+
+
 };
 
 function drawStars() {
@@ -58,3 +64,33 @@ function drawStars() {
         stars[i].draw();
     }
 }
+
+function aliveUpdate() {
+    if(switchy){
+        life += 0.03 * daltaTime * 0.05;
+        if(life > 1){
+            life = 1;
+        }
+
+    }else {
+        life -= 0.03 * daltaTime * 0.05;
+        if(life < 0){
+            life = 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
