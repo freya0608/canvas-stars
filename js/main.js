@@ -4,12 +4,24 @@
 var canvas;
 var context;
 var girlPic = new Image();
+var starPic = new Image();
+
+var num = 60;
+var stars = [];
+
 function init() {
     canvas = document.getElementById('canvas');
     context = canvas.getContext('2d');
     w = canvas.width;
     h = canvas.height;
     girlPic.src = 'img/girl.jpg';
+    starPic.src = 'img/star.png';
+    for(var i=0;i<num;i++){
+        var obj = new starObj();
+        stars.push(obj);
+        stars[i].init();
+    }
+
     gameLoop();
 }
 document.body.onload = init;
@@ -19,6 +31,7 @@ function gameLoop() {
    window.requestAnimationFrame(gameLoop);
     drawBackground();
     drawGirl();
+    drawStars()
 }
 
 
