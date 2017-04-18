@@ -21,13 +21,23 @@ starObj.prototype.init = function () {
     this.picNo = Math.floor(Math.random()*7);
     this.timer = 0;
 
-    this.xSped = Math.random()*3;
-    this.ySped = Math.random()*3;
+    this.xSped = Math.random()*3 - 1.5;//[-1.5,1.5]
+    this.ySped = Math.random()*3 - 1.5;
 };
 starObj.prototype.update = function () {
 
-    this.x +=this.xSped*daltaTime*0.002;
-    this.y +=this.ySped*daltaTime*0.002;
+    this.x +=this.xSped*daltaTime*0.004;
+    this.y +=this.ySped*daltaTime*0.004;
+
+    if(this.x<100 || this.x>700){
+        this.init();
+        return;
+    }
+
+    if(this.y<150 || this.y>450){
+        this.init();
+        return;
+    }
 
     this.timer += daltaTime;
     if(this.timer>50){
