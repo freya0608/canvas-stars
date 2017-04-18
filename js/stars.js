@@ -5,18 +5,24 @@
 var starObj = function () {
     this.x;
     this.y;
+
     this.picNo;
+    this.timer;
+
 };
 
 starObj.prototype.init = function () {
     this.x = Math.random()*600+100;//[0,1)
     this.y = Math.random()*300+150;
-    this.picNo=0;
+    this.picNo = Math.floor(Math.random()*7);
+    this.timer = 0
 };
 starObj.prototype.update = function () {
-    this.picNo += 1;
-    if( this.picNo>=7){
-        this.picNo=0;
+    this.timer += daltaTime;
+    if(this.timer>50){
+        this.picNo += 1;
+        this.picNo %= 7;
+        this.timer = 0;
     }
 
 };

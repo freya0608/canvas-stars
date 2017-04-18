@@ -9,6 +9,10 @@ var starPic = new Image();
 var num = 60;
 var stars = [];
 
+var lastTime;
+var daltaTime;
+
+
 function init() {
     canvas = document.getElementById('canvas');
     context = canvas.getContext('2d');
@@ -22,6 +26,8 @@ function init() {
         stars[i].init();
     }
 
+    lastTime = Date.now();
+
     gameLoop();
 }
 document.body.onload = init;
@@ -29,6 +35,11 @@ document.body.onload = init;
 function gameLoop() {
 
    window.requestAnimationFrame(gameLoop);
+
+    var now = Date.now();
+    daltaTime = now - lastTime;
+    lastTime = now;
+    console.log(daltaTime);
     drawBackground();
     drawGirl();
     drawStars()
